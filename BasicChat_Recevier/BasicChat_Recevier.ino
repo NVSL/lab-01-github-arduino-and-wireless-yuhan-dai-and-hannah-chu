@@ -50,12 +50,13 @@ void loop()
   }
   else if(Serial.read() == 's' && done) 
   {
-    Serial.print("data recevided: ");
+    Serial.print("Data recevided: ");
     Serial.println(rec_data);
     Serial.print("Recevied Rate: ");
     Serial.print(rec_data/(data_size*1.0) * 100.0);
     Serial.println("%");
-    Serial.print("Time takes to recevie data in microseconds: ");
-    Serial.println(endT-beginT);
+    Serial.print("Receving spped: ");
+    Serial.print(rec_data*1000.0/(endT-beginT));
+    Serial.println(" Kbps");
   }
 }
