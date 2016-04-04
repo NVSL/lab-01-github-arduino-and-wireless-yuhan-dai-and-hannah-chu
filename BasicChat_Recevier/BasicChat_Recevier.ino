@@ -41,7 +41,7 @@ void loop()
     }
     // calculate the data that is recevide from recevier
     if(rfRead() == 'p'){
-       rec_data++;
+      rec_data++;
     }
     else{
        endT = micros();
@@ -53,9 +53,9 @@ void loop()
     Serial.print("data recevided: ");
     Serial.println(rec_data);
     Serial.print("Recevied Rate: ");
-    Serial.print(rec_data/(data_size*1.0));
+    Serial.print(rec_data/(data_size*1.0) * 100.0);
     Serial.println("%");
-    Serial.print("Time takes to recevie data: ");
+    Serial.print("Time takes to recevie data in microseconds: ");
     Serial.println(endT-beginT);
   }
 }

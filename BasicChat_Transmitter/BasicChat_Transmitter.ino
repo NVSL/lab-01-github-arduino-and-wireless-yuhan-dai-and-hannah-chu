@@ -13,7 +13,6 @@
 */
 
 #include "RadioFunctions.h"
-
 int data_size = 100;
 int packet = 0;
 long time;
@@ -33,20 +32,21 @@ void setup()
 void loop()
 {  
   if(Serial.available()){
-  // send out data_size characters through RFradio
-  if(packet < data_size) {
-    rfWrite('p');
-    packet++;   
-  } 
-  // calculate the time it takes to send all the data
-  else{
-    current = micros() - time;
-    Serial.print("Transfer rate for");
-    Serial.print(data_size);
-    Serial.print("packets:  ");
-    // calculate kbps
-    Serial.print(packet*8*1000/current);
-    Serial.println(" Kbps"); 
-  }
+    // send out data_size characters through RFradio
+    if(packet < data_size) {
+      rfWrite('p');
+      packet++;   
+    } 
+    // calculate the time it takes to send all the data
+    else if(packet == data_size){
+      current = micros() - time;
+      Serial.print("Transfer rate for ");
+      Serial.print(data_size);
+      Serial.print(" packets:  ");
+      // calculate kbps
+      Serial.print(packet*8.0*1000.0/current);
+      Serial.println(" Kbps"); 
+      packet++;
+    }
   }
 }
