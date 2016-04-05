@@ -1,8 +1,7 @@
 /*
   ATmega128RFA1 Dev Board Basic Chat
-  by: Jim Lindblom
-      SparkFun Electronics
-  date: July 3, 2012
+  by: Yuhan Dai and Hannah Chu
+  date: April 3, 2016
   License: Beerware. Feel free to use, reuse, and modify this code
   as you please. If you find it useful, you can buy me a beer.
 
