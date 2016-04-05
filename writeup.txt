@@ -1,0 +1,25 @@
+1. How will you measure bandwidth with reasonable accuracy?
+We start timing right before starting to send, and once 10000 packets have been sent the time is stopped at calculated. We get a very consistent 24.53 Kbps rate when timing how long it takes to send packets.
+
+2. How will you determine whether a packet has been dropped?
+We will always send sets of 10000 packets, and that minus the number of total packets that the other side receives is the number of dropped packets.
+
+3. Do you think you can send data in both directions as quickly? 
+No, because it takes time to send and receive data, so if one side is already receiving data, it will be busy with that and not be able to send data as quickly.
+
+4. How do these measurement vary as the boards move farther apart?
+We measured distance using the square floor tiles in the CSE basement hallway. Each square is 19.7 inches, which is 50 cm (tape measures should be required to have both inches and centimeters...). We also did multiple trials because the packet loss rate seemed to fluctuate decently.
+
+Distance	Received				Average received	Packet Loss Rate
+30 cm 		10000					10000				0%
+3.5 m		9988 9938 10000			9975				0.25%
+7 m			9676 9882 9814			9790				2.1%
+10 m		9635 9543 9536			9571				4.29%
+15 m		8992 9129 9735			9285				7.15%
+20 m		9260 9273 9030			9187				8.13%
+25 m		9141 8894 4424 8166		7656				23.44%
+	Without 4424 outlier			8733				12.67%
+30 m		9365 7041 8254 8325		8246				17.54%
+35 m		6433 7427 7043			6967				30.33%
+
+Then the hallway became too short, but 30.33% packet loss rate is not very good anyway and we probably won't be flying quadcopters that far.

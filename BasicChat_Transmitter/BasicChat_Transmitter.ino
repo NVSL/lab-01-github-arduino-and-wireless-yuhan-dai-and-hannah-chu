@@ -13,7 +13,7 @@
 */
 
 #include "RadioFunctions.h"
-int data_size = 100;
+int data_size = 10000;
 int packet = 0;
 long time;
 long current;
@@ -26,12 +26,14 @@ void setup()
   
   // Send a message to other RF boards on this channel
   rfPrint("ATmega128RFA1 Dev Board Online!\r\n");
-  time = micros();
+  Serial.print("Ready\r\n");
 }
 
 void loop()
 {  
   if(Serial.available()){
+    if (packet == 0)
+      time = micros();
     // send out data_size characters through RFradio
     if(packet < data_size) {
       rfWrite('p');
@@ -47,6 +49,12 @@ void loop()
       Serial.print(packet*8.0*1000.0/current);
       Serial.println(" Kbps"); 
       packet++;
+    }
+    
+    else
+    {
+      packet = 0;
+      Serial.read();
     }
   }
 }
