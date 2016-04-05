@@ -15,10 +15,10 @@
 #include "RadioFunctions.h"
 
 int rec_data = 0;
-int data_size = 100;
+int data_size = 10000;
 bool first = true;
-long beginT;
-long endT;
+long beginT = 0;
+long endT = 0;
 bool done = false;
 
 void setup()
@@ -55,8 +55,12 @@ void loop()
     Serial.print("Recevied Rate: ");
     Serial.print(rec_data/(data_size*1.0) * 100.0);
     Serial.println("%");
-    Serial.print("Receving spped: ");
-    Serial.print(rec_data*1000.0/(endT-beginT));
+    Serial.print("Receving speed: ");
+    Serial.print(rec_data*8.0*1000.0/(endT-beginT));
     Serial.println(" Kbps");
+    first = true;
+    rec_data = 0;
+    beginT = 0;
+    endT = 0;
   }
 }
