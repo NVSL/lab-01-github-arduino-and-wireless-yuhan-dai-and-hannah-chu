@@ -15,3 +15,4 @@ lab-01-github-arduino-and-wireless-yuhan-dai-and-hannah-chu created by Classroom
 3. Do you think you can send data in both directions a quickly? 
 4. How do these measurement vary as the boards move farther apart?
 
+**Check writeup.txt for details**
